@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name – Graphic Designer</title>
+<meta name="description" content="Portfolio of a graphic designer: branding, posters, packaging and illustration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,800&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#E8EBEF; --ink:#101828; --blue:#2A3BFF; --yellow:#FFD23F; --pink:#FF6FA8; --line:#101828;
+  --display:'Bricolage Grotesque',Impact,sans-serif; --body:'Instrument Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 1.05rem/1.6 var(--body)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+nav strong{font:800 1.2rem var(--display)}
+nav div{display:flex;gap:22px}
+nav a{text-decoration:none;font-weight:600}
+nav a:hover{text-decoration:underline;text-underline-offset:5px}
+
+/* hero */
+.hero{position:relative;padding:40px 0 90px;overflow:hidden}
+.hero h1{font:800 clamp(4rem,17vw,13rem)/.86 var(--display);letter-spacing:-.04em;position:relative;z-index:2}
+.hero h1 span{display:block}
+.hero h1 span:nth-child(2){margin-left:.6em}
+.shape{position:absolute;z-index:1}
+.s1{width:34vw;max-width:380px;aspect-ratio:1;background:var(--blue);border-radius:50%;right:6%;top:6%}
+.s2{width:20vw;max-width:220px;aspect-ratio:1;background:var(--yellow);right:24%;bottom:8%;transform:rotate(14deg)}
+.s3{width:0;height:0;border-left:70px solid transparent;border-right:70px solid transparent;border-bottom:120px solid var(--pink);right:3%;bottom:14%;transform:rotate(-12deg)}
+.hero p{position:relative;z-index:2;max-width:34ch;margin-top:34px;font-size:1.25rem}
+
+/* work */
+section{padding:70px 0;border-top:2px solid var(--line)}
+h2{font:800 clamp(2rem,5vw,3.4rem)/1 var(--display);letter-spacing:-.02em;margin-bottom:28px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.filters button{font:600 1rem var(--body);background:none;border:2px solid var(--ink);border-radius:99px;padding:6px 18px;cursor:pointer;color:var(--ink)}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:26px}
+.card{background:none;border:0;text-align:left;cursor:pointer;color:inherit;font:inherit}
+.thumb{aspect-ratio:4/5;border:2px solid var(--ink);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb .ph{width:52%;aspect-ratio:1;border-radius:50%}
+.card:hover .thumb{box-shadow:8px 8px 0 var(--ink);transform:translate(-4px,-4px);transition:.15s}
+.card h3{font:800 1.35rem var(--display);margin-top:12px}
+.card small{font-size:.95rem;opacity:.75}
+
+/* about / contact */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+.about p+p{margin-top:1em}
+.list{list-style:none}
+.list li{padding:12px 0;border-bottom:1px solid var(--ink);font:600 1.15rem var(--body)}
+.contact a.big{display:inline-block;font:800 clamp(1.8rem,6vw,4rem)/1.05 var(--display);letter-spacing:-.02em;word-break:break-all}
+.contact a.big:hover{color:var(--blue)}
+.social{display:flex;gap:22px;margin-top:26px;flex-wrap:wrap}
+footer{padding:30px 0;border-top:2px solid var(--line);font-size:.95rem}
+
+/* lightbox */
+dialog{border:2px solid var(--ink);background:var(--bg);color:var(--ink);max-width:min(920px,94vw);width:100%;margin:auto;padding:0}
+dialog::backdrop{background:rgba(16,24,40,.75)}
+.lb{display:grid;grid-template-columns:1.2fr 1fr}
+.lb .thumb{border:0;border-right:2px solid var(--ink);aspect-ratio:auto;min-height:420px}
+.lb .info{padding:28px}
+.lb h3{font:800 2rem/1.05 var(--display);margin:6px 0 14px}
+.close{float:right;font:600 1rem var(--body);background:var(--ink);color:var(--bg);border:0;padding:6px 14px;cursor:pointer}
+
+@media(max-width:760px){.about,.lb{grid-template-columns:1fr}.lb .thumb{border-right:0;border-bottom:2px solid var(--ink);min-height:280px}.s1{right:-8%}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <strong id="navName"></strong>
+    <div><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+  </nav>
+
+  <header class="hero">
+    <div class="shape s1"></div><div class="shape s2"></div><div class="shape s3"></div>
+    <h1 id="heroName"></h1>
+    <p id="tagline"></p>
+  </header>
+</div>
+
+<section id="work"><div class="wrap">
+  <h2>Selected work</h2>
+  <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="about"><div class="wrap about">
+  <div><h2>About</h2><div id="bio"></div></div>
+  <div><h2>Services</h2><ul class="list" id="services"></ul></div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+  <h2>Let's work together</h2>
+  <a class="big" id="email"></a>
+  <div class="social" id="social"></div>
+</div></section>
+
+<footer><div class="wrap" id="footer"></div></footer>
+
+<dialog id="dlg" aria-label="Project details">
+  <div class="lb">
+    <div class="thumb" id="lbThumb"></div>
+    <div class="info">
+      <button class="close" id="closeBtn">Close</button>
+      <small id="lbCat"></small>
+      <h3 id="lbTitle"></h3>
+      <p id="lbText"></p>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* =====================================================
+   EDIT THIS BLOCK – it is the only part you need to change
+   ===================================================== */
+const SITE = {
+  name: "Your Name",
+  firstLine: "Your",           // hero name, line 1
+  secondLine: "Name",          // hero name, line 2
+  tagline: "Graphic designer making identities, posters and packaging that are hard to ignore.",
+  bio: [
+    "I'm a graphic designer based in Tezpur, Assam. I work with small businesses, events and creators to turn ideas into clear, memorable visuals.",
+    "Write a second paragraph about your background, tools (Photoshop, Illustrator, Figma…) and what you enjoy designing."
+  ],
+  services: ["Logo & brand identity", "Poster & print design", "Packaging design", "Social media graphics", "Illustration"],
+  email: "hello@example.com",
+  social: [
+    { label: "Instagram", url: "https://instagram.com/yourname" },
+    { label: "Behance",   url: "https://behance.net/yourname" },
+    { label: "LinkedIn",  url: "https://linkedin.com/in/yourname" }
+  ]
+};
+
+/* Add a project = add a block below.
+   image: put your file in the "images" folder, e.g. "images/logo-1.jpg".
+   Leave image as "" to show a colored placeholder.
+   category must be one of your own names – filters are created automatically. */
+const PROJECTS = [
+  { title: "Brand Identity One",  category: "Branding",     image: "", color: "#2A3BFF",
+    text: "Logo, color palette and stationery for a local café. Describe the brief, your idea and the result." },
+  { title: "Music Fest Poster",   category: "Posters",      image: "", color: "#FF6FA8",
+    text: "A3 poster for a college music festival. Mention tools, printing size and outcome." },
+  { title: "Tea Packaging",       category: "Packaging",    image: "", color: "#FFD23F",
+    text: "Box and label design for an Assam tea brand." },
+  { title: "Wildlife Series",     category: "Illustration", image: "", color: "#19B58A",
+    text: "Digital illustrations inspired by Kaziranga." },
+  { title: "Event Branding",      category: "Branding",     image: "", color: "#101828",
+    text: "Visual system for a two-day tech event: logo, badges and banners." },
+  { title: "Book Cover",          category: "Print",        image: "", color: "#FF8A3D",
+    text: "Cover design for a poetry collection." }
+];
+/* ================= end of editable block ================= */
+
+const $ = id => document.getElementById(id);
+document.title = SITE.name + " – Graphic Designer";
+$("navName").textContent = SITE.name;
+$("heroName").innerHTML = `<span>${SITE.firstLine}</span><span>${SITE.secondLine}</span>`;
+$("tagline").textContent = SITE.tagline;
+$("bio").innerHTML = SITE.bio.map(p => `<p>${p}</p>`).join("");
+$("services").innerHTML = SITE.services.map(s => `<li>${s}</li>`).join("");
+$("email").textContent = SITE.email; $("email").href = "mailto:" + SITE.email;
+$("social").innerHTML = SITE.social.map(s => `<a href="${s.url}" target="_blank" rel="noopener">${s.label}</a>`).join("");
+$("footer").textContent = "© " + new Date().getFullYear() + " " + SITE.name;
+
+function thumb(p){
+  return p.image
+    ? `<img src="${p.image}" alt="${p.title}" loading="lazy">`
+    : `<div class="ph" style="background:${p.color}"></div>`;
+}
+
+const cats = ["All", ...new Set(PROJECTS.map(p => p.category))];
+let active = "All";
+
+function render(){
+  $("filters").innerHTML = cats.map(c => `<button aria-pressed="${c===active}" data-c="${c}">${c}</button>`).join("");
+  $("grid").innerHTML = PROJECTS.map((p,i) => ({p,i})).filter(({p}) => active==="All" || p.category===active)
+    .map(({p,i}) => `<button class="card" data-i="${i}"><div class="thumb">${thumb(p)}</div><h3>${p.title}</h3><small>${p.category}</small></button>`).join("");
+}
+$("filters").addEventListener("click", e => { const b = e.target.closest("button"); if(b){ active = b.dataset.c; render(); } });
+$("grid").addEventListener("click", e => {
+  const c = e.target.closest(".card"); if(!c) return;
+  const p = PROJECTS[c.dataset.i];
+  $("lbThumb").innerHTML = thumb(p); $("lbCat").textContent = p.category;
+  $("lbTitle").textContent = p.title; $("lbText").textContent = p.text;
+  $("dlg").showModal();
+});
+$("closeBtn").onclick = () => $("dlg").close();
+$("dlg").addEventListener("click", e => { if(e.target === $("dlg")) $("dlg").close(); });
+render();
+</script>
+</body>
+</html>
